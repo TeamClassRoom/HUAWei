@@ -7,8 +7,6 @@ public class Chromosome {
 	
 	private int[] gene;
 	
-	ResultPathsAndCost pathsAndCost;
-	
 	List<Integer> serversId;
 	
 	double x = 0;
@@ -17,38 +15,17 @@ public class Chromosome {
 	
 	double P;
 	
-	public Chromosome() {
+	int cost;
 
-	}
 	
-	public Chromosome(List<Integer> id, double x, double t) {
+	public Chromosome(List<Integer> id, double x, int cost, double t) {
 		this.serversId = id;
 		this.x = x;
 		T = t;
 		P = Math.exp(-x/T);
-	}
-	
-	public Chromosome(List<Integer> ids) {
-		if(ids.get(0) == 0){
-			ids.remove(0);
-			gene = new int[ids.get(0)];
-			for(int i=1;i<ids.size();i++)
-				gene[ids.get(i)]=1;
-		}else{
-			gene = new int[ids.get(0)];
-			for(int i=1;i<ids.get(0);i++)
-				gene[i]= Math.random() > 0.5 ? 1:0;
-		}
-		
-	}
-	
-	public ResultPathsAndCost getPathsAndCost() {
-		return pathsAndCost;
+		this.cost = cost;
 	}
 
-	public void setPathsAndCost(ResultPathsAndCost pathsAndCost) {
-		this.pathsAndCost = pathsAndCost;
-	}
 
 	public int[] getGene() {
 		return gene;
@@ -93,8 +70,20 @@ public class Chromosome {
 		this.gene = gene;
 	}
 	
+	public int getCost() {
+		return cost;
+	}
+
+	public void setCost(int cost) {
+		this.cost = cost;
+	}
+
+
 	@Override
 	public String toString() {
-		return "Chromosome [gene=" + Arrays.toString(gene) + ", pathsAndCost=" + pathsAndCost + "]";
+		return "Chromosome [gene=" + Arrays.toString(gene) + ", serversId=" + serversId + ", x=" + x + ", T=" + T
+				+ ", P=" + P + ", cost=" + cost + "]";
 	}
+
+
 }

@@ -2,12 +2,13 @@ package com.lab603.jun.util.sa;
 
 import java.util.List;
 
+import com.lab603.module.Chromosome;
 import com.lab603.module.Net;
 import com.lab603.util.getResult;
 
 public class TransRule {
 
-	static List<Integer> transIds(List<Integer> ids, Net net) {// 暂定 随机变异
+	public static List<Integer> transIds(List<Integer> ids, Net net) {// 暂定 随机变异
 		ids = getResult.allLinkedNodesIds(net);
 		int random1 = (int) (Math.random() * ids.size());
 		ids.remove(random1);
@@ -20,4 +21,6 @@ public class TransRule {
 		ids.add(random3);
 		return ids;
 	}
+	
+
 }
