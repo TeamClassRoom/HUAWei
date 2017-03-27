@@ -6,7 +6,6 @@ import java.util.Random;
 
 import com.lab603.chenzuo.util.GACriterion;
 import com.lab603.chenzuo.util.GAUtil;
-import com.lab603.module.Chromosome;
 import com.lab603.module.CostNode;
 import com.lab603.module.Net;
 import com.lab603.module.ResultPathsAndCost;
@@ -206,6 +205,7 @@ public class GeneticAlgorithm {
 			System.err.println("k:"+k+" ,j:"+j);
 			Gh2[j] = newPopulation.get(k2).getGene()[k++];
 			for (i = 0; i < flag; i++) {
+				System.out.println();
 				if (Gh2[i] == Gh2[j]) {
 					break;
 				}
@@ -265,12 +265,12 @@ public class GeneticAlgorithm {
 
 	private void showList(boolean flag) {
 		if(flag){
-			System.out.println("...原种�?...");
+			System.out.println("...原种群...");
 			for(Chromosome chromosome :oldPopulation){
 				System.out.println(chromosome);
 			}
 		}else{
-			System.out.println("...新种�?...");
+			System.out.println("...新种群...");
 			for(Chromosome chromosome : newPopulation){
 				System.out.println(chromosome);
 			}

@@ -1,83 +1,68 @@
 package com.lab603.chenzuo.module;
 
-/**   
-*	种群个体（这里认为是染色体），在个体中，我们为这个个体添加两个属性:
-*	gene :个体的基因
-*	score:基因对应的适应度（函数值）
-*/
-
 import java.util.Arrays;
-import java.util.Random;
+import java.util.List;
+
+import com.lab603.module.ResultPathsAndCost;
 
 public class Chromosome {
-	private int[] gene;// 基因序列
-	private int score;// 对应的函数得分
+	
+	private int[] gene;
+	
+	ResultPathsAndCost pathsAndCost;
+	
+	List<Integer> serversId;
+	
+	double x = 0;
+	
+	double T;
+	
+	double P;
+	
+	public Chromosome() {
 
-	public int getScore() {
-		return score;
+	}
+	
+	public Chromosome(List<Integer> id, double x, double t) {
+		this.serversId = id;
+		this.x = x;
+		T = t;
+		P = Math.exp(-x/T);
+	}
+	
+	public Chromosome(List<Integer> ids) {
+		if(ids.get(0) == 0){
+			ids.remove(0);
+			gene = new int[ids.get(0)];
+			for(int i=1;i<ids.size();i++)
+				gene[ids.get(i)]=1;
+		}else{
+			gene = new int[ids.get(0)];
+			for(int i=1;i<ids.get(0);i++)
+				gene[i]= Math.random() > 0.5 ? 1:0;
+		}
+		
+	}
+	
+	public ResultPathsAndCost getPathsAndCost() {
+		return pathsAndCost;
 	}
 
-	public void setScore(int score) {
-		this.score = score;
+	public void setPathsAndCost(ResultPathsAndCost pathsAndCost) {
+		this.pathsAndCost = pathsAndCost;
 	}
 
 	public int[] getGene() {
 		return gene;
 	}
-
-	public void setGene(int[] gene) {
-		this.gene = gene;
+	public void setGene(int index,int value) {
+		gene[index] = value;
 	}
-
-	/**
-	 * @param size
-	 *            随机生成基因序列
-	 */
-	public Chromosome(int size) {
-		int i,j;
-		Random random = new Random(System.currentTimeMillis());
-		if (size <= 0) {
-			return;
-		}
-		initGeneSize(size);
-
-		gene[0] = random.nextInt(65535) % size;
-		for (i = 1; i < size;)// 染色体长度
-		{
-			gene[i] = random.nextInt(65535) % size;
-			for (j = 0; j < i; j++) {
-				if (gene[i] == gene[j]) {
-					break;
-				}
-			}
-			if (j == i) {
-				i++;
-			}
-		}
-	}
-
-	/**
-	 * 生成一个新基因
-	 */
-	public Chromosome() {
-
-	}
-
-	/**
-	 * @param size
-	 * @Author:kimi
-	 * @Description: 初始化基因长度
-	 */
-	private void initGeneSize(int size) {
-		if (size <= 0) {
-			return;
-		}
-		gene = new int[size];
-	}
-
+	
+	
+	
 	@Override
 	public String toString() {
-		return "Chromosome [gene=" + Arrays.toString(gene) + ", score=" + score + "]";
+		return "Chromosome [gene=" + Arrays.toString(gene) + ", pathsAndCost=" + pathsAndCost + "]";
 	}
-
 }

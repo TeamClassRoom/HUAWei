@@ -2,11 +2,11 @@ package com.lab603.chenzuo.util;
 
 public class GACriterion {
 
-	private int SCALE; 			// 种群规模，种群规模是指任意一代中的个体�?�数
+	private int SCALE; 			// 种群规模，种群规模是指任意一代中的个体总数
 	private float Pc;			// 交叉概率
 	private float Pm;			// 变异概率
 	private long MAX_TIME_GEN; 	// 种群代数执行时间
-	private long MAX_GEN; 		// �?大执行代�?
+	private long MAX_GEN; 		// 最大执行代数
 	
 	public GACriterion(int sCALE, float pc, float pm, long mAX_TIME_GEN, long mAX_GEN) {
 		SCALE = sCALE;

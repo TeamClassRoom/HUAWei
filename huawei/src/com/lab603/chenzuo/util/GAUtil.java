@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.lab603.module.Chromosome;
+import com.lab603.chenzuo.module.Chromosome;
 import com.lab603.module.Net;
 import com.lab603.module.ResultPathsAndCost;
 import com.lab603.yj.module.MinCostFlow;
