@@ -57,7 +57,41 @@ public class Chromosome {
 		gene[index] = value;
 	}
 	
-	
+	public List<Integer> getServersId() {
+		return serversId;
+	}
+
+	public void setServersId(List<Integer> serversId) {
+		this.serversId = serversId;
+	}
+
+	public double getX() {
+		return x;
+	}
+
+	public void setX(double x) {
+		this.x = x;
+	}
+
+	public double getT() {
+		return T;
+	}
+
+	public void setT(double t) {
+		T = t;
+	}
+
+	public double getP() {
+		return P;
+	}
+
+	public void setP(double p) {
+		P = p;
+	}
+
+	public void setGene(int[] gene) {
+		this.gene = gene;
+	}
 	
 	@Override
 	public String toString() {
